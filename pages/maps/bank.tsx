@@ -2,22 +2,22 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '/styles/Maps.module.css'
+import styles from '/styles/Map.module.css'
 import * as React from "react";
-import { Button } from "reactstrap";
 import Draggable from 'react-draggable';
+import Operators from '../operators'
 
-// function MyComponent() {
-//     const nodeRef = React.useRef(null);
-//     return (
-//         <Draggable nodeRef={nodeRef}>
-//             <div ref={nodeRef}>
-//                 <img src='/operators/ash.png' alt='Ash' width={25} height={25}>
-//                 </img>
-//             </div>
-//         </Draggable>
-//     );
-// }
+function hello(){
+    window.print();
+}
+
+const DownloadPDF = () => {
+    return (
+        <a onClick={hello}>
+            Hey
+        </a>
+    )
+}
 
 const Bank: NextPage = () => {
         const nodeRef = React.useRef(null);
@@ -32,272 +32,11 @@ const Bank: NextPage = () => {
         <header className={styles.header}>
             Header here
         </header>
+        <DownloadPDF/>
 
         <main className={styles.main}>
-            <Button color="primary" type="button">
-                Button
-            </Button>
             <div className={styles.flexOps}>
-                <div id='defenders' className={styles.flexOps}>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/mute.png' alt='Mute' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/smoke.png' alt='Smoke' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/castle.png' alt='Castle' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/pulse.png' alt='Pulse' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/doc.png' alt='Doc' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/Rook.png' alt='Rook' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/jager.png' alt='Jager' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/bandit.png' alt='Bandit' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/tachanka.png' alt='Tachanka' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/kapkan.png' alt='Kapkan' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/frost.png' alt='Jager' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/valkyrie.png' alt='Bandit' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/caveira.png' alt='Jager' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/echo.png' alt='Bandit' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/mira.png' alt='Jager' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/lesion.png' alt='Bandit' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/ela.png' alt='Jager' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/vigil.png' alt='Bandit' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/alibi.png' alt='Jager' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/maestro.png' alt='Bandit' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/clash.png' alt='Jager' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/kaid.png' alt='Bandit' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/mozzie.png' alt='Jager' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/warden.png' alt='Bandit' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/goyo.png' alt='Jager' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/wamai.png' alt='Bandit' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/oryx.png' alt='Jager' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/melusi.png' alt='Bandit' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/aruni.png' alt='Jager' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/thunderbird.png' alt='Bandit' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/thorn.png' alt='Jager' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/azami.png' alt='Bandit' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                </div>
-                <div id='attackers' className={styles.flexOps}>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/ash.png' alt='Ash' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/thermite.png' alt='Thermite' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/ash.png' alt='Ash' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/thermite.png' alt='Thermite' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/ash.png' alt='Ash' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/thermite.png' alt='Thermite' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/ash.png' alt='Ash' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/thermite.png' alt='Thermite' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/ash.png' alt='Ash' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/thermite.png' alt='Thermite' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/ash.png' alt='Ash' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/thermite.png' alt='Thermite' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/ash.png' alt='Ash' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/thermite.png' alt='Thermite' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/ash.png' alt='Ash' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/thermite.png' alt='Thermite' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/ash.png' alt='Ash' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/thermite.png' alt='Thermite' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/ash.png' alt='Ash' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/thermite.png' alt='Thermite' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/ash.png' alt='Ash' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/thermite.png' alt='Thermite' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/ash.png' alt='Ash' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/thermite.png' alt='Thermite' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/ash.png' alt='Ash' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/thermite.png' alt='Thermite' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/ash.png' alt='Ash' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/thermite.png' alt='Thermite' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/ash.png' alt='Ash' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/thermite.png' alt='Thermite' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/ash.png' alt='Ash' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                    <Draggable nodeRef={nodeRef}>
-                        <img ref={nodeRef} src='/operators/thermite.png' alt='Thermite' width={25} height={25} title={'hello'}>
-                        </img>
-                    </Draggable>
-                </div>
+                <Operators/>
             </div>
             <div id='utilities' className={styles.flexOps}>                
                 <Draggable nodeRef={nodeRef}>
@@ -321,7 +60,13 @@ const Bank: NextPage = () => {
                     </img>
                 </Draggable>
            </div>
+           <img src='/maps/bank/r6-maps-bank-blueprint-1.jpg' alt='Bank 2nd Floor  ' height={'85%'} width={'85%'}>
+            </img>
             <img src='/maps/bank/r6-maps-bank-blueprint-2.jpg' alt='Bank 2nd Floor  ' height={'85%'} width={'85%'}>
+            </img>
+            <img src='/maps/bank/r6-maps-bank-blueprint-3.jpg' alt='Bank 2nd Floor  ' height={'85%'} width={'85%'}>
+            </img>
+            <img src='/maps/bank/r6-maps-bank-blueprint-4.jpg' alt='Bank 2nd Floor  ' height={'85%'} width={'85%'}>
             </img>
 
         </main>

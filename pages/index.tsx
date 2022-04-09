@@ -1,7 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import Navbar from '../components/navbar'
+import Link from 'next/link'
+import Navbar from '../components/Navbar'
 import styles from '/styles/Home.module.css'
 
 const Home: NextPage = () => {
@@ -15,11 +16,14 @@ const Home: NextPage = () => {
       <header className={styles.header}>
         Header here
       </header>
-      {Navbar}
+      <Navbar/>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="/maps/bank">Mambo #5</a>
+          Welcome to 
+          <Link href={"/maps/bank"}>
+            <a>Mambo #5</a>
+          </Link>
         </h1>
 
         <p className={styles.description}>
@@ -28,25 +32,33 @@ const Home: NextPage = () => {
         </p>
 
         <div className={styles.grid}>
-          <a href="/maps" className={styles.card}>
-            <h2>Maps &rarr;</h2>
-            <p>Ranked and Casual map pool (excluding Barlett)</p>
-          </a>
+          <Link href={"/maps"}>
+            <a className={styles.card}>
+              <h2>Maps &rarr;</h2>
+              <p>Ranked and Casual map pool (excluding Barlett)</p>
+            </a>
+          </Link>
 
-          <a href="/operators" className={styles.card}>
-            <h2>Operators &rarr;</h2>
-            <p>Operators utility, usage and fun facts</p>
-          </a>
+          <Link href={"/operators"}>
+            <a className={styles.card}>
+              <h2>Operators &rarr;</h2>
+              <p>Operators utility, usage and fun facts</p>
+            </a>
+          </Link>
 
-          <a href="#" className={styles.card}>
-            <h2 >Ideas from you &rarr;</h2>
-            <p>Map & strat ideas/propositions from you </p>
-          </a>
+          <Link href={"/"}>
+            <a className={styles.card}>
+              <h2 >Ideas from you &rarr;</h2>
+              <p>Map & strat ideas/propositions from you </p>
+            </a>
+          </Link>
 
-          <a href="#" className={styles.card}>
-            <h2>Extra &rarr;</h2>
-            <p>Extra &rarr; &rarr; &rarr; &rarr; &rarr; &rarr; &rarr; &rarr; &rarr; Extra &rarr; &rarr; &rarr; &rarr; &rarr; &rarr; &rarr; &rarr; &rarr; </p>
-          </a>
+          <Link href={"/"}>
+            <a className={styles.card}>
+              <h2>Extra &rarr;</h2>
+              <p>Extra &rarr; &rarr; &rarr; &rarr; &rarr; &rarr; &rarr; &rarr; &rarr; Extra &rarr; &rarr; &rarr; &rarr; &rarr; &rarr; &rarr; &rarr; &rarr; </p>
+            </a>
+          </Link>
         </div>
       </main>
 

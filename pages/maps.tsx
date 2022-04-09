@@ -1,9 +1,30 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import styles from '/styles/Maps.module.css'
-// import Draggable from 'react-draggable';
 
+const allMaps = [
+  "Bank",
+  "Border",
+  "Chalet",
+  "Club House",
+  "Coastline",
+  "Consulate",
+  "Favela",
+  "Fortress",
+  "Hereford Base",
+  "House",
+  "Kafe Dostoevsky",
+  "Kanal",
+  "Oregon",
+  "Outback",
+  "Presidential Plane",
+  "Skyscraper",
+  "Theme Park",
+  "Tower",
+  "Villa",
+  "Yacht"];
 
 const Maps: NextPage = () => {
   return (
@@ -18,11 +39,111 @@ const Maps: NextPage = () => {
       </header>
 
       <main className={styles.main}>
-      <div className={styles.bank1}>
-      {/* <Draggable  bounds={{top: -100, left: -100, right: 100, bottom: 100}}>
-            </Draggable> */}
+        <h1>
+          Maps
+        </h1>
+        <div className={styles.grid}>
+          <Link href={"/maps/bank"}>
+            <a className={styles.card}>
+              Bank
+            </a>
+          </Link>
+          <Link href={"/maps/bank"}>
+            <a className={styles.card}>
+              Border
+            </a>
+          </Link>
+          <Link href={"/maps/bank"}>
+            <a className={styles.card}>
+              Chalet
+            </a>
+          </Link>
+          <Link href={"/maps/bank"}>
+            <a className={styles.card}>
+              Club House
+            </a>
+          </Link>
+          <Link href={"/maps/bank"}>
+            <a className={styles.card}>
+              Coastline
+            </a>
+          </Link>
+          <Link href={"/maps/bank"}>
+            <a className={styles.card}>
+              Consulate
+            </a>
+          </Link>
+          <Link href={"/maps/bank"}>
+            <a className={styles.card}>
+              Favela
+            </a>
+          </Link>
+          <Link href={"/maps/bank"}>
+            <a className={styles.card}>
+              Fortress
+            </a>
+          </Link>
+          <Link href={"/maps/bank"}>
+            <a className={styles.card}>
+              Hereford Base
+            </a>
+          </Link>
+          <Link href={"/maps/bank"}>
+            <a className={styles.card}>
+              House
+            </a>
+          </Link>
+          <Link href={"/maps/bank"}>
+            <a className={styles.card}>
+              Kafe Dostoyevsky
+            </a>
+          </Link>
+          <Link href={"/maps/bank"}>
+            <a className={styles.card}>
+              Kanal
+            </a>
+          </Link>
+          <Link href={"/maps/bank"}>
+            <a className={styles.card}>
+              Oregon
+            </a>
+          </Link>
+          <Link href={"/maps/bank"}>
+            <a className={styles.card}>
+              Outback
+            </a>
+          </Link>
+          <Link href={"/maps/bank"}>
+            <a className={styles.card}>
+              Presidential Plane
+            </a>
+          </Link>
+          <Link href={"/maps/bank"}>
+            <a className={styles.card}>
+              Skyscraper
+            </a>
+          </Link>
+          <Link href={"/maps/bank"}>
+            <a className={styles.card}>
+              Theme Park
+            </a>
+          </Link>
+          <Link href={"/maps/bank"}>
+            <a className={styles.card}>
+              Tower
+            </a>
+          </Link>
+          <Link href={"/maps/bank"}>
+            <a className={styles.card}>
+              Villa
+            </a>
+          </Link>
+          <Link href={"/maps/bank"}>
+            <a className={styles.card}>
+              Yacht
+            </a>
+          </Link>
         </div>
-
       </main>
 
       <footer className={styles.footer}>
