@@ -27,6 +27,7 @@ const allMaps = [
   "Yacht"];
 
 const Maps: NextPage = () => {
+  const cx = (...classNames: any[]) => classNames.join(' ');
   return (
     <div className={styles.container}>
       <Head>
@@ -44,102 +45,102 @@ const Maps: NextPage = () => {
         </h1>
         <div className={styles.grid}>
           <Link href={"/maps/bank"}>
-            <a className={styles.card}>
+            <a className={cx(styles.card, styles.bank)}>
               Bank
             </a>
           </Link>
           <Link href={"/maps/bank"}>
-            <a className={styles.card}>
+            <a className={cx(styles.card, styles.border)}>
               Border
             </a>
           </Link>
           <Link href={"/maps/bank"}>
-            <a className={styles.card}>
+            <a className={cx(styles.card, styles.chalet)}>
               Chalet
             </a>
           </Link>
           <Link href={"/maps/bank"}>
-            <a className={styles.card}>
+            <a className={cx(styles.card, styles.clubhouse)}>
               Club House
             </a>
           </Link>
           <Link href={"/maps/bank"}>
-            <a className={styles.card}>
+            <a className={cx(styles.card, styles.coastline)}>
               Coastline
             </a>
           </Link>
           <Link href={"/maps/bank"}>
-            <a className={styles.card}>
+            <a className={cx(styles.card, styles.consulate)}>
               Consulate
             </a>
           </Link>
           <Link href={"/maps/bank"}>
-            <a className={styles.card}>
+            <a className={cx(styles.card, styles.favela)}>
               Favela
             </a>
           </Link>
           <Link href={"/maps/bank"}>
-            <a className={styles.card}>
+            <a className={cx(styles.card, styles.fortress)}>
               Fortress
             </a>
           </Link>
           <Link href={"/maps/bank"}>
-            <a className={styles.card}>
+            <a className={cx(styles.card, styles.hereford)}>
               Hereford Base
             </a>
           </Link>
           <Link href={"/maps/bank"}>
-            <a className={styles.card}>
+            <a className={cx(styles.card, styles.house)}>
               House
             </a>
           </Link>
           <Link href={"/maps/bank"}>
-            <a className={styles.card}>
+            <a className={cx(styles.card, styles.kafe)}>
               Kafe Dostoyevsky
             </a>
           </Link>
           <Link href={"/maps/bank"}>
-            <a className={styles.card}>
+            <a className={cx(styles.card, styles.kanal)}>
               Kanal
             </a>
           </Link>
           <Link href={"/maps/bank"}>
-            <a className={styles.card}>
+            <a className={cx(styles.card, styles.oregon)}>
               Oregon
             </a>
           </Link>
           <Link href={"/maps/bank"}>
-            <a className={styles.card}>
+            <a className={cx(styles.card, styles.outback)}>
               Outback
             </a>
           </Link>
           <Link href={"/maps/bank"}>
-            <a className={styles.card}>
+            <a className={cx(styles.card, styles.plane)}>
               Presidential Plane
             </a>
           </Link>
           <Link href={"/maps/bank"}>
-            <a className={styles.card}>
+            <a className={cx(styles.card, styles.skyscraper)}>
               Skyscraper
             </a>
           </Link>
           <Link href={"/maps/bank"}>
-            <a className={styles.card}>
+            <a className={cx(styles.card, styles.themepark)}>
               Theme Park
             </a>
           </Link>
           <Link href={"/maps/bank"}>
-            <a className={styles.card}>
+            <a className={cx(styles.card, styles.tower)}>
               Tower
             </a>
           </Link>
           <Link href={"/maps/bank"}>
-            <a className={styles.card}>
+            <a className={cx(styles.card, styles.villa)}>
               Villa
             </a>
           </Link>
           <Link href={"/maps/bank"}>
-            <a className={styles.card}>
+            <a className={cx(styles.card, styles.yacht)}>
               Yacht
             </a>
           </Link>

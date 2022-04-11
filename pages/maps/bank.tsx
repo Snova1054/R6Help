@@ -3,25 +3,30 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '/styles/Map.module.css'
-import * as React from "react";
+import React, { useState, useEffect } from 'react';
 import Draggable from 'react-draggable';
 import Operators from '../operators'
 
-function hello(){
-    window.print();
-}
-
-const DownloadPDF = () => {
-    return (
-        <a onClick={hello}>
-            Hey
-        </a>
-    )
-}
 
 const Bank: NextPage = () => {
         const nodeRef = React.useRef(null);
+    // Definimos los estados
+    const [name, setName] = useState(String)
+    const [count, setCount] = useState(Number)
+    const [visibility, setVisibility] = useState(false)
 
+    // Los estados definidos se pueden usar dentro de otras funciones
+    function getName(){
+        console.log(name)
+    }
+
+    // Funciona como un componentDidMount y componentDidUpdate al mismo tiempo.
+    // Es decir, se ejecutara inmediatamente cargado el sitio sin la necesidad de un boton
+    // Y se ira actualizando al mismo tiempo que vaya cambiando su valor
+    useEffect(() => {
+        document.title = `${count} Clicks`
+        console.log(`Number of clicks : ${count}`)
+    })
   return (
     <div className={styles.container}>
         <Head>
@@ -32,11 +37,18 @@ const Bank: NextPage = () => {
         <header className={styles.header}>
             Header here
         </header>
-        <DownloadPDF/>
 
         <main className={styles.main}>
             <div className={styles.flexOps}>
                 <Operators/>
+            </div>
+            <div>
+                <p>Input Name: <input type="text" onChange={e => setName(e.target.value)} /></p>
+                <p>Name: {name}</p>
+                <button onClick={getName}>console.log(name)</button>
+                <br/>
+                <button onClick={() => setVisibility(!visibility) }>Click Me {visibility}</button>
+                { visibility ? <Operators /> : null }
             </div>
             <div id='utilities' className={styles.flexOps}>                
                 <Draggable nodeRef={nodeRef}>
@@ -59,8 +71,8 @@ const Bank: NextPage = () => {
                     <img ref={nodeRef} src='/utilities/line.png' alt='Green Dot' width={25} height={25} title={'Crouch'}>
                     </img>
                 </Draggable>
-           </div>
-           <img src='/maps/bank/r6-maps-bank-blueprint-1.jpg' alt='Bank 2nd Floor  ' height={'85%'} width={'85%'}>
+            </div>
+            <img src='/maps/bank/r6-maps-bank-blueprint-1.jpg' alt='Bank 2nd Floor  ' height={'85%'} width={'85%'}>
             </img>
             <img src='/maps/bank/r6-maps-bank-blueprint-2.jpg' alt='Bank 2nd Floor  ' height={'85%'} width={'85%'}>
             </img>

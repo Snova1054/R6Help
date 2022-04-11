@@ -21,33 +21,43 @@ function Navbar(){
   // };
 
   return (
-    <div className='text-sm border-r'>
+    <div className='text-gray-500 p-5 text-sm border-r bg-black'>
       <div className='space-y-4'>
-        <button className='flex items-center space-x-2
-        hover:text-white'>
-          <HomeIcon className='h-5 w-5' />
-          <p>Home</p>
-        </button>
-        <button className='flex items-center space-x-2
-        hover:text-white'>
-          <LibraryIcon className='h-5 w-5' />
-          <p>Maps</p>
-        </button>
-        <button className='flex items-center space-x-2
-        hover:text-white'>
-          <UsersIcon className='h-5 w-5' />
-          <p>Operators</p>
-        </button>
-        <button className='flex items-center space-x-2
-        hover:text-white'>
-          <StarIcon className='h-5 w-5' />
-          <p>Ideas</p>
-        </button>
-        <button className='flex items-center space-x-2
-        hover:text-white'>
-          <PlusCircleIcon className='h-5 w-5' />
-          <p>Extra</p>
-        </button>
+        <Link href={"/"} passHref>
+          <button className='flex items-center space-x-2
+          hover:text-white'>
+            <HomeIcon className='h-5 w-5' />
+            <p>Home</p>
+          </button>
+        </Link>
+        <Link href={"/maps"} passHref>
+          <button className='flex items-center space-x-2
+          hover:text-white'>
+            <LibraryIcon className='h-5 w-5' />
+            <p>Maps</p>
+          </button>
+        </Link>
+        <Link href={"/operators"} passHref>
+          <button className='flex items-center space-x-2
+          hover:text-white'>
+            <UsersIcon className='h-5 w-5' />
+            <p>Operators</p>
+          </button>
+        </Link>
+        <Link href={"/"} passHref>
+          <button className='flex items-center space-x-2
+          hover:text-white'>
+            <StarIcon className='h-5 w-5' />
+            <p>Ideas</p>
+          </button>
+        </Link>
+        <Link href={"/"} passHref>
+          <button className='flex items-center space-x-2
+          hover:text-white'>
+            <PlusCircleIcon className='h-5 w-5' />
+            <p>Extra</p>
+          </button>
+        </Link>
       </div>
     </div>
         /* <Link href='/'>

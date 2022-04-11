@@ -100,12 +100,12 @@
   text-align: center;
   vertical-align:middle;
   color: inherit;
-  background-color: lightgray;
+  background-color: grey;
   text-decoration: none;
   font-size: 20px;
-  border: 1px solid #eaeaea;
+  /* border: 1px solid #eaeaea; */
   border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  transition: color 0.15s ease, border-color 0.15s ease, background-image 0.15s ease, text-shadow 0.15s ease;
   /* max-width: 300px; */
   width: 300px;
 }
@@ -114,18 +114,132 @@
 .card:focus,
 .card:active {
   color: white;
-  border-color: #0070f3;
-  /* background: url("/operators/ash.png") no-repeat; */
-  background-image: url("/maps/bank.jpg");
+  /* border-color: #0070f3; */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   text-shadow: 5px 5px 10px black;
-    /* background-image: "/operators/ash.png"; */
 }
-/* span:hover {
-  
-} */
+
+.bank:hover,
+.bank:focus,
+.bank:active {
+  background-image: url("/maps/bank.jpg");
+}
+
+.border:hover,
+.border:focus,
+.border:active {
+  background-image: url("/maps/border.jpg");
+}
+
+.chalet:hover,
+.chalet:focus,
+.chalet:active {
+  background-image: url("/maps/chalet.jpg");
+}
+
+.clubhouse:hover,
+.clubhouse:focus,
+.clubhouse:active {
+  background-image: url("/maps/clubhouse.jpg");
+}
+
+.coastline:hover,
+.coastline:focus,
+.coastline:active {
+  background-image: url("/maps/coastline.jpg");
+}
+
+.consulate:hover,
+.consulate:focus,
+.consulate:active {
+  background-image: url("/maps/consulate.jpg");
+}
+
+.favela:hover,
+.favela:focus,
+.favela:active {
+  background-image: url("/maps/favela.jpg");
+}
+
+.fortress:hover,
+.fortress:focus,
+.fortress:active {
+  background-image: url("/maps/fortress.jpg");
+}
+
+.hereford:hover,
+.hereford:focus,
+.hereford:active {
+  background-image: url("/maps/hereford.jpg");
+}
+
+.house:hover,
+.house:focus,
+.house:active {
+  background-image: url("/maps/house.jpg");
+}
+
+.kafe:hover,
+.kafe:focus,
+.kafe:active {
+  background-image: url("/maps/kafe.jpg");
+}
+
+.kanal:hover,
+.kanal:focus,
+.kanal:active {
+  background-image: url("/maps/kanal.jpg");
+}
+
+.oregon:hover,
+.oregon:focus,
+.oregon:active {
+  background-image: url("/maps/oregon.jpg");
+}
+
+.outback:hover,
+.outback:focus,
+.outback:active {
+  background-image: url("/maps/outback.jpg");
+}
+
+.plane:hover,
+.plane:focus,
+.plane:active {
+  background-image: url("/maps/plane.jpg");
+}
+
+.skyscraper:hover,
+.skyscraper:focus,
+.skyscraper:active {
+  background-image: url("/maps/skyscraper.jpg");
+}
+
+.themepark:hover,
+.themepark:focus,
+.themepark:active {
+  background-image: url("/maps/themepark.jpg");
+}
+
+.tower:hover,
+.tower:focus,
+.tower:active {
+  background-image: url("/maps/tower.jpg");
+}
+
+.villa:hover,
+.villa:focus,
+.villa:active {
+  background-image: url("/maps/villa.jpg");
+}
+
+.yacht:hover,
+.yacht:focus,
+.yacht:active {
+  background-image: url("/maps/yacht.jpg");
+}
 
 .card h2 {
   margin: 0 0 1rem 0;
