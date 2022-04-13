@@ -24,7 +24,7 @@ const Bank: NextPage = () => {
     // Es decir, se ejecutara inmediatamente cargado el sitio sin la necesidad de un boton
     // Y se ira actualizando al mismo tiempo que vaya cambiando su valor
     useEffect(() => {
-        document.title = `${count} Clicks`
+        // document.title = `${count} Clicks`
         console.log(`Number of clicks : ${count}`)
     })
   return (

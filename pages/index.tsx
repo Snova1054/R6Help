@@ -18,9 +18,9 @@ const Home: NextPage = () => {
         <div>
           <main className={styles.main}>
             <h1 className={styles.title}>
-              Welcome to 
+              Welcome to
               <Link href={"/maps/bank"}>
-                <a>Mambo #5</a>
+                <a> R6 Help</a>
               </Link>
             </h1>
 
