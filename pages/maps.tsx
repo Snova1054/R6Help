@@ -49,7 +49,7 @@ const Maps: NextPage = () => {
               Bank
             </a>
           </Link>
-          <Link href={"/maps/bank"}>
+          <Link href={"/maps/bank1"}>
             <a className={cx(styles.card, styles.border)}>
               Border
             </a>
