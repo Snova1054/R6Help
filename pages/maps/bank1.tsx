@@ -38,7 +38,7 @@ const defendersArray = [
         {name: "Azami"}];
         
 const Bank1: NextPage = () => {
-        const nodeRef = React.useRef(null);
+    const nodeRef = React.useRef(null);
     // Definimos los estados
     const [name, setName] = useState(String)
     const [count, setCount] = useState(Number)
