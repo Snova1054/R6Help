@@ -5,44 +5,108 @@ import Image from 'next/image'
 import styles from '/styles/Map.module.css'
 import React, { useState, useEffect } from 'react';
 import Draggable from 'react-draggable';
-import Mute from '../mute'
+import Defenders from '../defenders'
+import Attackers from '../attackers'
+import { render } from 'react-dom';
 
 const defendersArray = [
-        {name: "Doc"},
-        {name: "Rook"},
-        {name: "Jager"},
-        {name: "Bandit"},
-        {name: "Tachanka"},
-        {name: "Kapkan"},
-        {name: "Frost"},
-        {name: "Valkyrie"},
-        {name: "Caveira"},
-        {name: "Echo"},
-        {name: "Mira"},
-        {name: "Lesion"},
-        {name: "Ela"},
-        {name: "Vigil"},
-        {name: "Alibi"},
-        {name: "Maestro"},
-        {name: "Clash"},
-        {name: "Kaid"},
-        {name: "Mozzie"},
-        {name: "Warden"},
-        {name: "Goyo"},
-        {name: "Wamai"},
-        {name: "Oryx"},
-        {name: "Melusi"},
-        {name: "Aruni"},
-        {name: "Thunderbird"},
-        {name: "Thorn"},
-        {name: "Azami"}];
-        
+    {name: "Mute"},
+    {name: "Smoke"},
+    {name: "Castle"},
+    {name: "Pulse"},
+    {name: "Doc"},
+    {name: "Rook"},
+    {name: "Jager"},
+    {name: "Bandit"},
+    {name: "Tachanka"},
+    {name: "Kapkan"},
+    {name: "Frost"},
+    {name: "Valkyrie"},
+    {name: "Caveira"},
+    {name: "Echo"},
+    {name: "Mira"},
+    {name: "Lesion"},
+    {name: "Ela"},
+    {name: "Vigil"},
+    {name: "Alibi"},
+    {name: "Maestro"},
+    {name: "Clash"},
+    {name: "Kaid"},
+    {name: "Mozzie"},
+    {name: "Warden"},
+    {name: "Goyo"},
+    {name: "Wamai"},
+    {name: "Oryx"},
+    {name: "Melusi"},
+    {name: "Aruni"},
+    {name: "Thunderbird"},
+    {name: "Thorn"},
+    {name: "Azami"}
+];
+const attackersArray = [
+    {name: 'Sledge'},
+    {name: 'Thatcher'},
+    {name: 'Ash'},
+    {name: 'Thermite'},
+    {name: 'Montagne'},
+    {name: 'Twitch'},
+    {name: 'Blitz'},
+    {name: 'IQ'},
+    {name: 'Fuze'},
+    {name: 'Glaz'},
+    {name: 'Buck'},
+    {name: 'Blackbeard'},
+    {name: 'Capitao'},
+    {name: 'Hibana'},
+    {name: 'Jackal'},
+    {name: 'Ying'},
+    {name: 'Zofia'},
+    {name: 'Dokkaebi'},
+    {name: 'Finka'},
+    {name: 'Lion'},
+    {name: 'Maverick'},
+    {name: 'Nomad'},
+    {name: 'Gridlock'},
+    {name: 'Nokk'},
+    {name: 'Amaru'},
+    {name: 'Kali'},
+    {name: 'Iana'},
+    {name: 'Ace'},
+    {name: 'Zero'},
+    {name: 'Flores'},
+    {name: 'Osa'}
+]
+
 const Bank1: NextPage = () => {
     const nodeRef = React.useRef(null);
     // Definimos los estados
-    const [name, setName] = useState(String)
-    const [count, setCount] = useState(Number)
-    const [visibility, setVisibility] = useState(false)
+    const [name, setName] = useState(String);
+    const [count, setCount] = useState(Number);
+    const [visibility, setVisibility] = useState(false);
+    const [showedDefenders, setShowedDefenders] = useState([]);
+    const [selectedDefender, setSelectedDefender] = useState(0);
+    const [showedAttackers, setShowedAttackers] = useState([]);
+    const [selectedAttacker, setSelectedAttacker] = useState(0);
+
+    function addDefender() {
+        console.log(selectedDefender);
+        setShowedDefenders([...showedDefenders, {id: selectedDefender}]);
+    }
+
+    function addAttacker() {
+        console.log(selectedAttacker);
+        setShowedAttackers([...showedAttackers, {id: selectedAttacker}]);
+    }
+
+    function selectDefender(e) {
+        const defender = e.target.value;
+        setSelectedDefender(defender);
+    }
+
+    function selectAttacker(e) {
+        const attacker = e.target.value;
+        setSelectedAttacker(attacker);
+    }
 
     // Los estados definidos se pueden usar dentro de otras funciones
     function getName(){
@@ -68,29 +132,60 @@ const Bank1: NextPage = () => {
         </header>
 
         <main className={styles.main}>
-            <div className={styles.flexOps}>
+            {/* <div className={styles.flexOps}>
                 <Mute id={1}/>
-            </div>
-            <div>
-                <select style={{color:"black"}}>
-                {defendersArray.map(({name}, Index) => {
-                    let i = ""+Index+"";
-                    return (
-                        <option key={Index} value={Index}>
-                            {name}
-
-                        </option>
-                    );
-                })}
+            </div> */}
+            <div className={styles.flexOps}>
+                <select style={{color:"black", textAlign:"center"}} id={"defenderSelect"} onChange={selectDefender}>
+                    {defendersArray.map(({name}, Index) => {
+                        return (
+                            <option key={Index} value={Index}>
+                                {name}
+                            </option>
+                        );
+                    })}
+                </select>
+                &nbsp;
+                <select style={{color:"black", textAlign:"center"}} id={"attackerSelect"} onChange={selectAttacker}>
+                    {attackersArray.map(({name}, Index) => {
+                        return (
+                            <option key={Index} value={Index}>
+                                {name}
+                            </option>
+                        );
+                    })}
                 </select>
             </div>
+            <div className={styles.flexOps}>
+                <button onClick={addDefender}>
+                    Add defender
+                </button>
+                &nbsp;
+                <button onClick={addAttacker}>
+                    Add attacker
+                </button>
+            </div>
+            <div className={styles.flexOps}>
+                {showedDefenders.map(({id}, Index) => {
+                    return(
+                        <Defenders key={Index} id={id}/>
+                    );
+                })}
+            </div>
+            <div className={styles.flexOps}>
+                {showedAttackers.map(({id}, Index) => {
+                    return(
+                        <Attackers key={Index} id={id}/>
+                    );
+                })}
+            </div>
             <div>
-                <p>Input Name: <input type="text" onChange={e => setName(e.target.value)} /></p>
+                {/* <p>Input Name: <input type="text" onChange={e => setName(e.target.value)} /></p>
                 <p>Name: {name}</p>
                 <button onClick={getName}>console.log(name)</button>
-                <br/>
-                <button onClick={() => setVisibility(!visibility) }>Click Me {visibility}</button>
-                { visibility ? <Mute id={1}/> : null }
+                <br/> */}
+                <button onClick={() => setVisibility(!visibility) }>Click here for<br></br>Smoke{visibility}</button>
+                { visibility ? <Defenders id={1}/> : null }
             </div>
             <div id='utilities' className={styles.flexOps}>
                 <Draggable nodeRef={nodeRef}>
