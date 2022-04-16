@@ -297,11 +297,11 @@ const defendersInfo = [
     }
 ]
 
-function Defenders(props: { id: number; }) {
+function Defenders(props: { id: number; title:string;}) {
 const nodeRef = React.useRef(null);
 const Index = props.id;
 
-const handleStop = (event, dragElement) => {
+const handleStop = (event : any, dragElement : any) => {
     console.log("X : ", dragElement.x)
     console.log("Y : ", dragElement.y)
     console.log("Object : ", event.path[0])
@@ -325,7 +325,7 @@ const handleStop = (event, dragElement) => {
 }
   return (
     <Draggable nodeRef={nodeRef} onStop={handleStop}>
-        <img ref={nodeRef} src={defendersInfo[Index].image} alt={defendersInfo[Index].alt} title={defendersInfo[Index].alt} className="defender"
+        <img ref={nodeRef} src={defendersInfo[Index].image} alt={defendersInfo[Index].alt} title={props.title} className="defender"
         width={25} height={25}>
         </img>
     </Draggable>

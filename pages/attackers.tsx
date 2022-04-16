@@ -293,7 +293,7 @@ function Attackers(props: { id: number; }) {
 const nodeRef = React.useRef(null);
 const Index = props.id;
 
-const handleStop = (event, dragElement) => {
+const handleStop = (event : any, dragElement : any) => {
     console.log("X : ", dragElement.x)
     console.log("Y : ", dragElement.y)
     console.log("Object : ", event.path[0])
