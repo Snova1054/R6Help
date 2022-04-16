@@ -3,7 +3,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '/styles/Map.module.css'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createRef, useRef } from 'react';
 import Draggable from 'react-draggable';
 import Defenders from '../defenders'
 import Attackers from '../attackers'
@@ -84,9 +84,15 @@ const Bank1: NextPage = () => {
     const [count, setCount] = useState(Number);
     const [visibility, setVisibility] = useState(false);
     const [showedDefenders, setShowedDefenders] = useState([]);
-    const [selectedDefender, setSelectedDefender] = useState(0);
+    const [selectedDefender, setSelectedDefender] = useState('0');
     const [showedAttackers, setShowedAttackers] = useState([]);
-    const [selectedAttacker, setSelectedAttacker] = useState(0);
+    const [selectedAttacker, setSelectedAttacker] = useState('0');
+
+    const showedLength = showedDefenders.length;
+
+    const defendersRefs = useRef([]);
+    const attackersRef = useRef([]);
+
 
     function addDefender() {
         console.log(selectedDefender);
@@ -98,12 +104,12 @@ const Bank1: NextPage = () => {
         setShowedAttackers([...showedAttackers, {id: selectedAttacker}]);
     }
 
-    function selectDefender(e) {
+    function selectDefender(e: { target: { value: any; }; }) {
         const defender = e.target.value;
         setSelectedDefender(defender);
     }
 
-    function selectAttacker(e) {
+    function selectAttacker(e: { target: { value: any; }; }) {
         const attacker = e.target.value;
         setSelectedAttacker(attacker);
     }
@@ -113,6 +119,47 @@ const Bank1: NextPage = () => {
         console.log(name)
     }
 
+    function refreshRefs()
+    {
+        for (let i = 0; i < defendersRefs.current.length; i++) {
+            if(defendersRefs.current[i].firstChild == null)
+            {
+                // defendersRefs.current[i].splice(i, 1);
+                console.log(defendersRefs.current[i])
+            }
+        }
+        for (let i = 0; i < attackersRef.current.length; i++) {
+            if(attackersRef.current[i].firstChild == null)
+            {
+                // attackersRef.current[i].splice(i, 1);
+                console.log(attackersRef.current[i])
+            }
+        }
+        // defendersRefs.splice(index, 1)
+        // defendersRefs.current.filter(isNull);
+        // attackersRef.current.filter(isNull);
+    }
+
+    function showAllRefs()
+    {
+        defendersRefs.current.forEach(element => {
+            console.log(element.firstChild.alt+" img : ",element.firstChild);
+            if(element.firstChild.attributes.x != null && element.firstChild.attributes.y != null)
+            {
+                console.log(element.firstChild.alt+" attributes.x.nodeValue : ", element.firstChild.attributes.x.nodeValue)
+                console.log(element.firstChild.alt+" attributes.y.nodeValue : ", element.firstChild.attributes.y.nodeValue)
+            }
+        });
+        attackersRef.current.forEach(element => {
+            console.log(element.firstChild.alt+" img : ",element.firstChild);
+            if(element.firstChild.attributes.x != null && element.firstChild.attributes.y != null)
+            {
+                console.log(element.firstChild.alt+" attributes.x.nodeValue : ", element.firstChild.attributes.x.nodeValue)
+                console.log(element.firstChild.alt+" attributes.y.nodeValue : ", element.firstChild.attributes.y.nodeValue)
+            }
+        });
+    }
+    
     // Funciona como un componentDidMount y componentDidUpdate al mismo tiempo.
     // Es decir, se ejecutara inmediatamente cargado el sitio sin la necesidad de un boton
     // Y se ira actualizando al mismo tiempo que vaya cambiando su valor
@@ -120,7 +167,9 @@ const Bank1: NextPage = () => {
         // document.title = `${count} Clicks`
         console.log(`Number of clicks : ${count}`)
     })
-  return (
+
+
+    return (
     <div className={styles.container}>
         <Head>
             <title>R6 Help - Index</title>
@@ -168,16 +217,30 @@ const Bank1: NextPage = () => {
             <div className={styles.flexOps}>
                 {showedDefenders.map(({id}, Index) => {
                     return(
-                        <Defenders key={Index} id={id}/>
+                        <div key={Index} ref={defender => defendersRefs.current[Index] = defender}>
+                            <Defenders key={Index} id={id}/>
+                        </div>
                     );
                 })}
             </div>
             <div className={styles.flexOps}>
                 {showedAttackers.map(({id}, Index) => {
                     return(
-                        <Attackers key={Index} id={id}/>
+                        <div key={Index} ref={attacker => attackersRef.current[Index] = attacker}>                            
+                            <Attackers key={Index} id={id}/>
+                        </div>
                     );
                 })}
+            </div>
+            <div>
+                <button onClick={showAllRefs} style={{color:"yellow"}}>
+                    showAllRefs
+                </button>
+            </div>
+            <div>
+                <button onClick={refreshRefs} style={{color:"yellow"}}>
+                    refreshRefs
+                </button>
             </div>
             <div>
                 {/* <p>Input Name: <input type="text" onChange={e => setName(e.target.value)} /></p>

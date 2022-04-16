@@ -307,29 +307,28 @@ const handleStop = (event, dragElement) => {
     console.log("Object : ", event.path[0])
     console.log("Element : ", event.path)
     event.path[0].style.transform = "translate("+dragElement.x+"px, "+dragElement.y+"px)"
-    defendersInfo[event.path[0].id].xPos = dragElement.x
-    defendersInfo[event.path[0].id].yPos = dragElement.y
-    console.log("defendersInfo[event.path[0].id].xPos", defendersInfo[event.path[0].id].xPos)
-    console.log("defendersInfo[event.path[0].id].yPos", defendersInfo[event.path[0].id].yPos)
+    event.path[0].setAttribute("x", dragElement.x);
+    event.path[0].setAttribute("y", dragElement.y);
+    // defendersInfo[event.path[0].id].xPos = dragElement.x
+    // defendersInfo[event.path[0].id].yPos = dragElement.y
+    // console.log("defendersInfo[event.path[0].id].xPos", defendersInfo[event.path[0].id].xPos)
+    // console.log("defendersInfo[event.path[0].id].yPos", defendersInfo[event.path[0].id].yPos)
 
     if(dragElement.y < 0)
     {
-        event.path[0].style.transform = "translate(0px, 0px)"
-        defendersInfo[event.path[0].id].xPos = 0
-        defendersInfo[event.path[0].id].yPos = 0
-        event.path[0].style.transform = "translate("+defendersInfo[event.path[0].id].xPos+"px, "+defendersInfo[event.path[0].id].yPos+"px)"
+        // event.path[0].style.transform = "translate(0px, 0px)"
+        // defendersInfo[event.path[0].id].xPos = 0
+        // defendersInfo[event.path[0].id].yPos = 0
+        // event.path[0].style.transform = "translate("+defendersInfo[event.path[0].id].xPos+"px, "+defendersInfo[event.path[0].id].yPos+"px)"
         event.path[0].remove();
     }
 }
   return (
-    <div>
-        <Draggable nodeRef={nodeRef} onStop={handleStop}>
-            <img ref={nodeRef} src={defendersInfo[Index].image} alt={defendersInfo[Index].alt} title={defendersInfo[Index].alt} className="defender"
-            id={""+Index+""} width={25} height={25}>
-            </img>
-
-        </Draggable>
-    </div>
+    <Draggable nodeRef={nodeRef} onStop={handleStop}>
+        <img ref={nodeRef} src={defendersInfo[Index].image} alt={defendersInfo[Index].alt} title={defendersInfo[Index].alt} className="defender"
+        width={25} height={25}>
+        </img>
+    </Draggable>
   )
 }
 export default Defenders;
