@@ -94,15 +94,22 @@ const Bank1: NextPage = () => {
     const defendersRefs = useRef([]);
     const attackersRef = useRef([]);
 
+    const textAreaRef = useRef();
+
+    const refsDataArray: { id: any; type: any; title: any; x: any; y: any; }[] = [];
+
 
     function addDefender() {
         console.log(selectedDefender);
         setShowedDefenders([...showedDefenders, { id: selectedDefender, title: titleOps }]);
+        setTitleOps("");
+        textAreaRef.current.value = "";
     }
 
     function addAttacker() {
         console.log(selectedAttacker);
         setShowedAttackers([...showedAttackers, { id: selectedAttacker, title: titleOps }]);
+        setTitleOps("");
     }
 
     function selectDefender(e: { target: { value: any; }; }) {
@@ -155,6 +162,30 @@ const Bank1: NextPage = () => {
         });
     }
 
+    function saveAllRefs() {
+        defendersRefs.current.forEach(element => {
+            console.log(element.firstChild.alt + " img : ", element.firstChild);
+            if (element.firstChild.attributes.x != null && element.firstChild.attributes.y != null) {
+                console.log(element.firstChild.alt + " attributes.x.nodeValue : ", element.firstChild.attributes.x.nodeValue)
+                console.log(element.firstChild.alt + " attributes.y.nodeValue : ", element.firstChild.attributes.y.nodeValue)
+                refsDataArray.push({
+                    id: element.firstChild.id.split("_")[0],
+                    type: element.firstChild.className.split(" ")[0],
+                    title: element.firstChild.title,
+                    x: element.firstChild.attributes.x.nodeValue,
+                    y: element.firstChild.attributes.y.nodeValue});
+            }
+        });
+        console.log(refsDataArray);
+        // attackersRef.current.forEach(element => {
+        //     console.log(element.firstChild.alt + " img : ", element.firstChild);
+        //     if (element.firstChild.attributes.x != null && element.firstChild.attributes.y != null) {
+        //         console.log(element.firstChild.alt + " attributes.x.nodeValue : ", element.firstChild.attributes.x.nodeValue)
+        //         console.log(element.firstChild.alt + " attributes.y.nodeValue : ", element.firstChild.attributes.y.nodeValue)
+        //     }
+        // });
+    }
+
     // Funciona como un componentDidMount y componentDidUpdate al mismo tiempo.
     // Es decir, se ejecutara inmediatamente cargado el sitio sin la necesidad de un boton
     // Y se ira actualizando al mismo tiempo que vaya cambiando su valor
@@ -198,7 +229,7 @@ const Bank1: NextPage = () => {
                     </select>
                 </div>
                 <div className={styles.flexOps}>
-                    <textarea style={{ color: "black" }} name="defenderText" id="defAdd" cols={30} rows={4} onChange={e => setTitleOps(e.target.value)} placeholder="&nbsp;&nbsp;&nbsp;What should the operator do?&nbsp;&nbsp; &rarr;Make the rotates&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &rarr;Reinforce hatches &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &rarr;Drone, e.g., Lobby"></textarea>
+                    <textarea ref={textAreaRef} style={{ color: "black" }} name="defenderText" id="defAdd" cols={30} rows={4} onChange={e => setTitleOps(e.target.value)} placeholder="&nbsp;&nbsp;&nbsp;What should the operator do?&nbsp;&nbsp; &rarr;Make the rotates&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &rarr;Reinforce hatches &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &rarr;Drone, e.g., Lobby"></textarea>
                     &nbsp;
                     <textarea style={{ color: "black" }} name="attackerText" id="atkAdd" cols={30} rows={4} onChange={e => setTitleOps(e.target.value)} placeholder="&nbsp;&nbsp;&nbsp;What should the operator do?&nbsp;&nbsp; &rarr;Make the rotates&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &rarr;Reinforce hatches &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &rarr;Drone, e.g., Lobby"></textarea>
                 </div>
@@ -240,12 +271,17 @@ const Bank1: NextPage = () => {
                     </button>
                 </div>
                 <div>
+                    <button onClick={saveAllRefs} style={{ color: "yellow" }}>
+                        saveAllRefs
+                    </button>
+                </div>
+                <div>
                     {/* <p>Input Name: <input type="text" onChange={e => setName(e.target.value)} /></p>
                 <p>Name: {name}</p>
                 <button onClick={getName}>console.log(name)</button>
                 <br/> */}
                     <button onClick={() => setVisibility(!visibility)}>Click here for<br></br>Smoke{visibility}</button>
-                    {visibility ? <Defenders id={1} /> : null}
+                    {visibility ? <Defenders id={1} title={"There's a fkg smoke"} /> : null}
                 </div>
                 <div id='utilities' className={styles.flexOps}>
                     <Draggable nodeRef={nodeRef}>

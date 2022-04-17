@@ -325,8 +325,8 @@ const handleStop = (event : any, dragElement : any) => {
 }
   return (
     <Draggable nodeRef={nodeRef} onStop={handleStop}>
-        <img ref={nodeRef} src={defendersInfo[Index].image} alt={defendersInfo[Index].alt} title={props.title} className="defender"
-        width={25} height={25}>
+        <img ref={nodeRef} src={defendersInfo[Index].image} alt={defendersInfo[Index].alt} title={props.title} id={Index+"_def"}
+        className={"defender"} width={25} height={25}>
         </img>
     </Draggable>
   )
