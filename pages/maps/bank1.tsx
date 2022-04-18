@@ -213,8 +213,8 @@ const Bank1: NextPage = () => {
             id: defendersRefs.current[index].firstChild.id.split("_")[0],
             type: defendersRefs.current[index].firstChild.className.split(" ")[0],
             title: defendersRefs.current[index].firstChild.title,
-            x: defendersRefs.current[index].firstChild.attributes.x.nodeValue,
-            y: defendersRefs.current[index].firstChild.attributes.y.nodeValue
+            x: parseInt(defendersRefs.current[index].firstChild.attributes.x.nodeValue),
+            y: parseInt(defendersRefs.current[index].firstChild.attributes.y.nodeValue)
         }]);
     }
 

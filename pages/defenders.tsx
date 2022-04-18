@@ -336,7 +336,7 @@ function Defenders(props: { id: number; title: string; loaded: boolean; x: numbe
     else
     {
         return (
-            <Draggable nodeRef={nodeRef} onStop={handleStop} defaultPosition={{x: parseInt(props.x), y: parseInt(props.y)}}>
+            <Draggable nodeRef={nodeRef} onStop={handleStop} defaultPosition={{x: props.x, y: props.y}}>
                 <img ref={nodeRef} src={defendersInfo[Index].image} alt={defendersInfo[Index].alt} title={props.title} id={Index+"_def"}
                 className={"defender"} width={25} height={25}>
                 </img>
