@@ -79,22 +79,23 @@ const attackersArray = [
 
 const Bank1: NextPage = () => {
     const nodeRef = React.useRef(null);
-    // Definimos los estados
+    
     const [name, setName] = useState(String);
     const [count, setCount] = useState(Number);
     const [visibility, setVisibility] = useState(false);
-    const [showedDefenders, setShowedDefenders] = useState([]);
+    const [showedDefenders, setShowedDefenders] = useState<any>([]);
     const [selectedDefender, setSelectedDefender] = useState('0');
-    const [showedAttackers, setShowedAttackers] = useState([]);
+    const [showedAttackers, setShowedAttackers] = useState<any>([]);
     const [selectedAttacker, setSelectedAttacker] = useState('0');
     const [titleOps, setTitleOps] = useState("");
+    const [refsDataState, setRefsDataState] = useState<any>([]);
 
     // const showedLength = showedDefenders.length;
 
-    const defendersRefs = useRef([]);
-    const attackersRef = useRef([]);
+    const defendersRefs = useRef<any>([]);
+    const attackersRef = useRef<any>([]);
 
-    const textAreaRef = useRef();
+    const textAreaRef = useRef<any>();
 
     const refsDataArray: { id: any; type: any; title: any; x: any; y: any; }[] = [];
 
@@ -127,6 +128,12 @@ const Bank1: NextPage = () => {
     //     console.log(name)
     // }
 
+    /**
+     * Console logs if DragElement has been removed
+     * 
+     * @param fileName
+     * @returns script version
+    */
     function refreshRefs() {
         for (let i = 0; i < defendersRefs.current.length; i++) {
             if (defendersRefs.current[i].firstChild == null) {
@@ -146,16 +153,14 @@ const Bank1: NextPage = () => {
     }
 
     function showAllRefs() {
-        defendersRefs.current.forEach(element => {
-            console.log(element.firstChild.alt + " img : ", element.firstChild);
-            if (element.firstChild.attributes.x != null && element.firstChild.attributes.y != null) {
+        defendersRefs.current.forEach((element: { firstChild: { attributes: { x: { nodeValue: any; } | null; y: { nodeValue: any; } | null; }; alt: string; } | null; }) => {
+            if (element.firstChild != null && element.firstChild.attributes.x != null && element.firstChild.attributes.y != null) {
                 console.log(element.firstChild.alt + " attributes.x.nodeValue : ", element.firstChild.attributes.x.nodeValue)
                 console.log(element.firstChild.alt + " attributes.y.nodeValue : ", element.firstChild.attributes.y.nodeValue)
             }
         });
-        attackersRef.current.forEach(element => {
-            console.log(element.firstChild.alt + " img : ", element.firstChild);
-            if (element.firstChild.attributes.x != null && element.firstChild.attributes.y != null) {
+        attackersRef.current.forEach((element: { firstChild: { attributes: { x: { nodeValue: any; } | null; y: { nodeValue: any; } | null; }; alt: string; } | null; }) => {
+            if (element.firstChild != null && element.firstChild.attributes.x != null && element.firstChild.attributes.y != null) {
                 console.log(element.firstChild.alt + " attributes.x.nodeValue : ", element.firstChild.attributes.x.nodeValue)
                 console.log(element.firstChild.alt + " attributes.y.nodeValue : ", element.firstChild.attributes.y.nodeValue)
             }
@@ -163,9 +168,10 @@ const Bank1: NextPage = () => {
     }
 
     function saveAllRefs() {
-        defendersRefs.current.forEach(element => {
-            console.log(element.firstChild.alt + " img : ", element.firstChild);
-            if (element.firstChild.attributes.x != null && element.firstChild.attributes.y != null) {
+        refsDataArray.length = 0;
+        let index = 0;
+        defendersRefs.current.forEach((element: { firstChild: { attributes: { x: { nodeValue: any; } | null; y: { nodeValue: any; } | null; }; alt: string; id: string; className: string; title: any; } | null; }) => {
+            if (element.firstChild != null && element.firstChild.attributes.x != null && element.firstChild.attributes.y != null) {
                 console.log(element.firstChild.alt + " attributes.x.nodeValue : ", element.firstChild.attributes.x.nodeValue)
                 console.log(element.firstChild.alt + " attributes.y.nodeValue : ", element.firstChild.attributes.y.nodeValue)
                 refsDataArray.push({
@@ -174,9 +180,24 @@ const Bank1: NextPage = () => {
                     title: element.firstChild.title,
                     x: element.firstChild.attributes.x.nodeValue,
                     y: element.firstChild.attributes.y.nodeValue});
+                loadOpsRef(index);
+                // setRefsDataState([...refsDataState, {
+                //     id: element.firstChild.id.split("_")[0],
+                //     type: element.firstChild.className.split(" ")[0],
+                //     title: element.firstChild.title,
+                //     x: element.firstChild.attributes.x.nodeValue,
+                //     y: element.firstChild.attributes.y.nodeValue
+                // }]);
             }
+            index++;
         });
-        console.log(refsDataArray);
+        // console.log(refsDataArray);
+        // console.log(refsDataState);
+        // {refsDataState.map(({ type }) => {
+        //     console.log(type)
+        // })}
+
+
         // attackersRef.current.forEach(element => {
         //     console.log(element.firstChild.alt + " img : ", element.firstChild);
         //     if (element.firstChild.attributes.x != null && element.firstChild.attributes.y != null) {
@@ -184,6 +205,17 @@ const Bank1: NextPage = () => {
         //         console.log(element.firstChild.alt + " attributes.y.nodeValue : ", element.firstChild.attributes.y.nodeValue)
         //     }
         // });
+    }
+
+    function loadOpsRef(index: number)
+    {
+        setRefsDataState((previous: any) => [...previous, {
+            id: defendersRefs.current[index].firstChild.id.split("_")[0],
+            type: defendersRefs.current[index].firstChild.className.split(" ")[0],
+            title: defendersRefs.current[index].firstChild.title,
+            x: defendersRefs.current[index].firstChild.attributes.x.nodeValue,
+            y: defendersRefs.current[index].firstChild.attributes.y.nodeValue
+        }]);
     }
 
     // Funciona como un componentDidMount y componentDidUpdate al mismo tiempo.
@@ -243,16 +275,36 @@ const Bank1: NextPage = () => {
                     </button>
                 </div>
                 <div className={styles.flexOps}>
-                    {showedDefenders.map(({ id, title }, Index) => {
+                    {refsDataState.map(({ id, type, title, x, y}: any, Index: any) => {
+                        if(type == "defender")
+                        {
+                            return(
+                                <div key={Index}>
+                                    <Defenders key={Index} id={id} title={title} loaded={true} x={x} y={y}/>
+                                </div>  
+                            );
+                        }
+                        else
+                        {
+                            return(
+                              <div key={Index}>
+                                  <Attackers key={Index} id={id}/>
+                              </div>  
+                            );
+                        }
+                    })}
+                </div>
+                <div className={styles.flexOps}>
+                    {showedDefenders.map(({ id, title }: any, Index: any) => {
                         return (
                             <div key={Index} ref={defender => defendersRefs.current[Index] = defender}>
-                                <Defenders key={Index} id={id} title={title} />
+                                <Defenders key={Index} id={id} title={title} loaded={false} x={0} y={0} />
                             </div>
                         );
                     })}
                 </div>
                 <div className={styles.flexOps}>
-                    {showedAttackers.map(({ id, title }, Index) => {
+                    {showedAttackers.map(({ id, title }: any, Index: any) => {
                         return (
                             <div key={Index} ref={attacker => attackersRef.current[Index] = attacker}>
                                 <Attackers key={Index} id={id} />
@@ -281,7 +333,7 @@ const Bank1: NextPage = () => {
                 <button onClick={getName}>console.log(name)</button>
                 <br/> */}
                     <button onClick={() => setVisibility(!visibility)}>Click here for<br></br>Smoke{visibility}</button>
-                    {visibility ? <Defenders id={1} title={"There's a fkg smoke"} /> : null}
+                    {visibility ? <Defenders id={1} title={"There's a fkg smoke"} loaded={false} x={0} y={0} /> : null}
                 </div>
                 <div id='utilities' className={styles.flexOps}>
                     <Draggable nodeRef={nodeRef}>
