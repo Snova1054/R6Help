@@ -5,7 +5,6 @@ import Image from 'next/image'
 import styles from '/styles/Map.module.css'
 import React, { useState, useEffect } from 'react';
 import Draggable from 'react-draggable';
-import Operators from '../operators'
 
 
 const Bank: NextPage = () => {
@@ -40,7 +39,6 @@ const Bank: NextPage = () => {
 
         <main className={styles.main}>
             <div className={styles.flexOps}>
-                <Operators/>
             </div>
             <div>
                 <p>Input Name: <input type="text" onChange={e => setName(e.target.value)} /></p>
@@ -48,7 +46,6 @@ const Bank: NextPage = () => {
                 <button onClick={getName}>console.log(name)</button>
                 <br/>
                 <button onClick={() => setVisibility(!visibility) }>Click Me {visibility}</button>
-                { visibility ? <Operators /> : null }
             </div>
             <div id='utilities' className={styles.flexOps}>                
                 <Draggable nodeRef={nodeRef}>
