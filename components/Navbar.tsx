@@ -21,7 +21,7 @@ function Navbar(){
   // };
 
   return (
-    <div className='text-gray-500 p-5 text-sm border-r bg-black'>
+    <div className='text-gray-500 p-5 text-sm border-r bg-black overflow-y-scroll scrollbar-hide h-screen'>
       <div className='space-y-4'>
         <Link href={"/"} passHref>
           <button className='flex items-center space-x-2
