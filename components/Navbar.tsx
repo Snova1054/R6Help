@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import type { NextPage } from 'next'
+import Index from 'pages/index'
 import {
   HomeIcon,
   SearchIcon,
