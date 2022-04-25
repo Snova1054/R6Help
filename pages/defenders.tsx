@@ -297,7 +297,7 @@ const defendersInfo = [
     }
 ]
 
-function Defenders(props: { id: number; title: string; loaded: boolean; x: number; y: number;}) {
+function Defenders(props: any) {
     const nodeRef = React.useRef(null);
     const Index = props.id;
 

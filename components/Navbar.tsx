@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import type { NextPage } from 'next'
 import Index from 'pages/index'
+import Maps from 'pages/maps'
 import {
   HomeIcon,
   SearchIcon,
@@ -15,8 +16,12 @@ import {
 } from "@heroicons/react/solid"
 
 
-function Navbar(){ 
+function Navbar(props: any){ 
 
+  if(props.maps == null || props.maps == undefined)
+  {
+    console.log("hello");
+  }
   // const handleClick = () => {
   //   setActive(!active);
   // };
@@ -24,20 +29,16 @@ function Navbar(){
   return (
     <div className='text-gray-500 p-5 text-sm border-r bg-black overflow-y-scroll scrollbar-hide h-screen'>
       <div className='space-y-4'>
-        <Link href={"/"} passHref>
-          <button className='flex items-center space-x-2
-          hover:text-white'>
-            <HomeIcon className='h-5 w-5' />
-            <p>Home</p>
-          </button>
-        </Link>
-        <Link href={"/maps"} passHref>
-          <button className='flex items-center space-x-2
-          hover:text-white'>
-            <LibraryIcon className='h-5 w-5' />
-            <p>Maps</p>
-          </button>
-        </Link>
+        <button onClick={() => props.setRender(props.home)} className='flex items-center space-x-2
+        hover:text-white'>
+          <HomeIcon className='h-5 w-5' />
+          <p>Home</p>
+        </button>
+        <button onClick={() => props.setRender(<Maps setRender={props.setRender} />)} className='flex items-center space-x-2
+        hover:text-white'>
+          <LibraryIcon className='h-5 w-5' />
+          <p>Maps</p>
+        </button>
         <Link href={"/operators"} passHref>
           <button className='flex items-center space-x-2
           hover:text-white'>

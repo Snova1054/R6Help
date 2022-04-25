@@ -12,59 +12,57 @@ import { SetStateAction, useState } from 'react'
 
 const Index: NextPage = () => {
 
-  // const [here, setHere] = useState(false);
+  const [first, setFirst] = useState<any>(); // use it to show a different Navbar when clicking on Maps (maybe show all maps name..?)
 
   const Home = () => {
-      return (
-        <div className={styles.container}>
-          <div className={styles.main}>
-            <h1 className={styles.title}>
-              Welcome to
-              <Link href={"/maps/bank"}>
-                <a> R6 Help</a>
-              </Link>
-            </h1>
-    
-            <p className={styles.description}>
-              Some <code className={styles.code}>code</code>
-            </p>
-    
-            <div className={styles.grid}>
-              <Link href={"/maps"}>
-                <a className={styles.card}>
-                  <h2>Maps &rarr;</h2>
-                  <p>Ranked and Casual map pool (excluding Barlett)</p>
-                </a>
-              </Link>
-    
-              <Link href={"/operators"}>
-                <a className={styles.card}>
-                  <h2>Operators &rarr;</h2>
-                  <p>Operators utility, usage and fun facts</p>
-                </a>
-              </Link>
-    
-              <Link href={"/"}>
-                <a className={styles.card}>
-                  <h2>Ideas from you &rarr;</h2>
-                  <p>Map & strat ideas/propositions from you </p>
-                </a>
-              </Link>
-    
-              <Link href={"/"}>
-                <a className={styles.card}>
-                  <h2>Extra &rarr;</h2>
-                  <p>
-                    Extra &rarr; &rarr; &rarr; &rarr; &rarr; &rarr; &rarr; &rarr;
-                    &rarr; Extra &rarr; &rarr; &rarr; &rarr; &rarr; &rarr; &rarr;
-                    &rarr; &rarr;{" "}
-                  </p>
-                </a>
-              </Link>
-            </div>
+    return (
+      <div className={styles.container}>
+        <div className={styles.main}>
+          <h1 className={styles.title}>
+            Welcome to
+            <Link href={"/maps/bank"}>
+              <a> R6 Help</a>
+            </Link>
+          </h1>
+
+          <p className={styles.description}>
+            Some <code className={styles.code}>code</code>
+          </p>
+
+          <div className={styles.grid}>
+            <a className={styles.card} onClick={() => setRendered(<Maps setRender={setRendered} />)}>
+              <h2>Maps &rarr;</h2>
+              <p>Ranked and Casual map pool (excluding Barlett)</p>
+            </a>
+
+            <Link href={"/operators"}>
+              <a className={styles.card}>
+                <h2>Operators &rarr;</h2>
+                <p>Operators utility, usage and fun facts</p>
+              </a>
+            </Link>
+
+            <Link href={"/"}>
+              <a className={styles.card}>
+                <h2>Ideas from you &rarr;</h2>
+                <p>Map & strat ideas/propositions from you </p>
+              </a>
+            </Link>
+
+            <Link href={"/"}>
+              <a className={styles.card}>
+                <h2>Extra &rarr;</h2>
+                <p>
+                  Extra &rarr; &rarr; &rarr; &rarr; &rarr; &rarr; &rarr; &rarr;
+                  &rarr; Extra &rarr; &rarr; &rarr; &rarr; &rarr; &rarr; &rarr;
+                  &rarr; &rarr;{" "}
+                </p>
+              </a>
+            </Link>
           </div>
-    
-          {/* <footer className={styles.footer}>
+        </div>
+
+        {/* <footer className={styles.footer}>
                   <a
                     href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
                     target="_blank"
@@ -76,16 +74,16 @@ const Index: NextPage = () => {
                     </span>
                   </a>
                 </footer> */}
-        </div>
-      );
-    };
-    
+      </div>
+    );
+  };
+
   // setRendered(<Home here = {setRendered}/>);
   // function renderer(renderThis: SetStateAction<JSX.Element>)
   // {
   //   setRendered(renderThis);
   // }
-  const [rendered, setRendered] = useState<any>(<Home/>);
+  const [rendered, setRendered] = useState<any>(<Home />);
 
   return (
     <div className='bg-black h-screen overflow-hidden'>
@@ -95,7 +93,7 @@ const Index: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className='flex'>
-        <Navbar />
+        <Navbar setRender={setRendered} home={Home} maps={first} />
         {/* <Center/> */}
         <div className='h-screen w-screen overflow-auto'>
           {rendered}

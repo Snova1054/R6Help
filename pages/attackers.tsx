@@ -289,7 +289,7 @@ const attackersInfo = [
 ]
 
 
-function Attackers(props: { id: number; }) {
+function Attackers(props: any) {
 const nodeRef = React.useRef(null);
 const Index = props.id;
 
