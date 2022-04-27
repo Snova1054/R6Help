@@ -10,6 +10,30 @@
     flex-direction: row;
     justify-content: center;
 }
+
+.defenders {
+  border: 2px solid;
+  border-image: linear-gradient(var(--angle), blue, yellow, red) 1;
+  animation: 5s rotate linear infinite;
+}
+.attackers {
+  border: 2px solid;
+  border-image: linear-gradient(var(--angle), orange, purple, green) 1;
+  animation: 5s rotate linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+
 .container {
     padding: 0 2rem;
   }

@@ -301,12 +301,12 @@ function Defenders(props: any) {
     const nodeRef = React.useRef(null);
     const Index = props.id;
 
-    const handleStop = (event : any, dragElement : any) => {
+    const handleStop = (event: any, dragElement: any) => {
         console.log("X : ", dragElement.x)
         console.log("Y : ", dragElement.y)
         console.log("Object : ", event.path[0])
         console.log("Element : ", event.path)
-        event.path[0].style.transform = "translate("+dragElement.x+"px, "+dragElement.y+"px)"
+        event.path[0].style.transform = "translate(" + dragElement.x + "px, " + dragElement.y + "px)"
         event.path[0].setAttribute("x", dragElement.x);
         event.path[0].setAttribute("y", dragElement.y);
         // defendersInfo[event.path[0].id].xPos = dragElement.x
@@ -314,8 +314,7 @@ function Defenders(props: any) {
         // console.log("defendersInfo[event.path[0].id].xPos", defendersInfo[event.path[0].id].xPos)
         // console.log("defendersInfo[event.path[0].id].yPos", defendersInfo[event.path[0].id].yPos)
 
-        if(dragElement.y < 0)
-        {
+        if (dragElement.x > 0) {
             // event.path[0].style.transform = "translate(0px, 0px)"
             // defendersInfo[event.path[0].id].xPos = 0
             // defendersInfo[event.path[0].id].yPos = 0
@@ -323,23 +322,22 @@ function Defenders(props: any) {
             event.path[0].remove();
         }
     }
-    if(!props.loaded)
-    {
+    if (!props.loaded) {
         return (
             <Draggable nodeRef={nodeRef} onStop={handleStop}>
-                <img ref={nodeRef} src={defendersInfo[Index].image} alt={defendersInfo[Index].alt} title={props.title} id={Index+"_def"}
-                className={"defender"} width={25} height={25}>
-                </img>
+                    <img ref={nodeRef} src={defendersInfo[Index].image} alt={defendersInfo[Index].alt} title={props.title} id={Index + "_def"}
+                        className={styles.defenders} width={25} height={25}>
+                    </img>
             </Draggable>
         )
     }
     else
     {
         return (
-            <Draggable nodeRef={nodeRef} onStop={handleStop} defaultPosition={{x: props.x, y: props.y}}>
-                <img ref={nodeRef} src={defendersInfo[Index].image} alt={defendersInfo[Index].alt} title={props.title} id={Index+"_def"}
-                className={"defender"} width={25} height={25}>
-                </img>
+            <Draggable nodeRef={nodeRef} onStop={handleStop} defaultPosition={{ x: props.x, y: props.y }}>
+                    <img ref={nodeRef} src={defendersInfo[Index].image} alt={defendersInfo[Index].alt} title={props.title} id={Index + "_def"}
+                        className={styles.defenders} width={25} height={25}>
+                    </img>
             </Draggable>
         )
     }
